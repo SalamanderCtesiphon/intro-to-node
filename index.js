@@ -4,8 +4,14 @@ var fs = require('fs')
 
 http
   .createServer(function (req, res) {
-    var q = url.parse(req.url, true)
+    console.log(req.url)
+    let q = url.parse(req.url, true)
     let filename = '.' + q.pathname
+    if (req.url === '/') {
+      filename = './index.html'
+    } else if (req.url === '/about/') {
+      filename = './about.html'
+    }
     fs.readFile(filename, function (err, data) {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/html' })
