@@ -9,8 +9,10 @@ http
     let filename = '.' + q.pathname
     if (req.url === '/') {
       filename = './index.html'
-    } else if (req.url === '/about/') {
+    } else if (req.url === '/about') {
       filename = './about.html'
+    } else if (req.url === '/contact-me') {
+      filename = './contact-me.html'
     }
     fs.readFile(filename, function (err, data) {
       if (err) {
